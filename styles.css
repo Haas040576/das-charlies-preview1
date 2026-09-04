@@ -376,8 +376,8 @@ img { display: block; max-width: 100%; }
   bottom: 9vh;
   z-index: 3;
   max-width: 620px;
-  transform: translateY(calc((1 - var(--scene-visible, 0)) * 45px));
-  opacity: var(--scene-visible, 0);
+  transform: translateY(calc((1 - var(--copy-visible, 0)) * 45px));
+  opacity: var(--copy-visible, 0);
 }
 
 .day-copy time { display: block; margin-bottom: 1.2rem; color: var(--gold); font-size: .68rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }

@@ -87,10 +87,18 @@
 
     dayScenes.forEach((scene, index) => {
       let visibility = 0;
+      let copyVisibility = 0;
       if (index === base) visibility = base === dayScenes.length - 1 ? 1 : 1 - fraction;
       if (index === base + 1) visibility = fraction;
+      if (index === base) {
+        copyVisibility = base === dayScenes.length - 1
+          ? 1
+          : 1 - smooth(clamp((fraction - .25) / .23));
+      }
+      if (index === base + 1) copyVisibility = smooth(clamp((fraction - .52) / .23));
       scene.style.opacity = visibility.toFixed(4);
       scene.style.setProperty('--scene-visible', visibility.toFixed(4));
+      scene.style.setProperty('--copy-visible', copyVisibility.toFixed(4));
       scene.style.pointerEvents = visibility > .5 ? 'auto' : 'none';
     });
 
@@ -138,6 +146,7 @@
     dayScenes.forEach((scene, index) => {
       scene.style.opacity = index === 0 ? '1' : '0';
       scene.style.setProperty('--scene-visible', index === 0 ? '1' : '0');
+      scene.style.setProperty('--copy-visible', index === 0 ? '1' : '0');
     });
   }
 
